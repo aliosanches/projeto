@@ -1,0 +1,28 @@
+<h3>
+	Projetos
+	<button type="button" class="btn btn_add_projeto btn-xs btn-primary pull-right">
+		<i class="fa fa-plus"></i>
+	</button>
+</h3>
+<table class="bordered striped table_projetos">
+	<thead>
+		<tr>
+			<th width="60" class="text-center">Código</th>
+			<th width="60" class="text-center">Status</th>
+			<th>Nome</th>
+			<th width="100" class="text-center">Inicio</th>
+			<th width="100" class="text-center">Fim</th>
+			<th width="60" class="text-center">Opcoes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="hide" template-row="projeto">
+			<td class="text-center" template-field="codigo" ></td>
+			<td class="text-center" template-field="status" ></td>
+			<td template-field="nome" ></td>
+			<td class="text-center" template-field="inicio" ></td>
+			<td class="text-center" template-field="fim" ></td>
+			<td class="text-center" template-field="options"></td>
+		</tr>
+	</tbody>
+</table>

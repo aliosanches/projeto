@@ -1,0 +1,29 @@
+- projeto
+	clone
+	relatorios
+	area de estatisticas
+	add equipe projeto
+	templates
+	delete projeto 
+		delete atividade
+- atividades
+	crud
+	listagem de atividades somente do usuario
+	clone atividade
+	add user atividade
+	filtros
+	apontamentos
+- usuarios
+	cadastros de usuarios
+	envio de emails 
+- geral
+	permissoes
+	crud clientes
+	campos personalizados
+	fila de email
+	lista de sessoes
+	excluir sessoes
+	api
+	traducao
+	layout
+	url amigavel

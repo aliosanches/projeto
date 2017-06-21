@@ -1,0 +1,27 @@
+.fa-exclamation-triangle{
+	color: #FFC107;
+}
+
+.fa-ellipsis-h{
+	color: #9E9E9E;
+}	
+
+.fa-clock-o{
+	color: #2196F3;
+}
+
+.fa-minus-circle{
+	color: #f91100;
+}
+
+.fa-check-circle{
+	color: #4CAF50;
+}
+
+tr.no-border td{
+	border-top: none !important;
+}
+
+li .active{
+	background-color: #eee;
+}

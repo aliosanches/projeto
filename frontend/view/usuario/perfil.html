@@ -1,0 +1,98 @@
+<div class="row" style="margin: auto; margin-left: 20px;">
+	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+		<div class="pull-center text-center">
+			<img src="" class="img-circ-mat big img_usuario">
+			<br>
+			<input type="file" name="edt_foto" class="hidden edt_foto">
+			<button type="button" class="btn-floating btn_small btn_editar_foto" style="position: absolute;top: 53%;">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<h3 class="usuario_nome"></h3>
+			<br>
+			<button type="button" class="btn-mat btn-primary-mat btn_editar_perfil">Editar Perfil</button>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+		<div class="row" style="font-size: 20px; padding-top: 30px;">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>País:</label>
+				<span class="usuario_pais"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Estado:</label>
+				<span class="usuario_estado"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Cidade:</label>
+				<span class="usuario_cidade"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Data de nascimento:</label>
+				<span class="usuario_datanascimento"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Sexo:</label>
+				<span class="usuario_sexo"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Ocupação:</label>
+				<span class="usuario_ocupacao"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>E-mail:</label>
+				<span class="usuario_email"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Telefone:</label>
+				<span class="usuario_telefone"></span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 15px;">
+				<label>Celular:</label>
+				<span class="usuario_celular"></span>
+			</div>
+			<div class="hidden-xs col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 15px;">
+				<label>Observações:</label>
+				<span class="usuario_observacao"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="padding-top: 15px;">
+
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-top: 15px;">
+		<center>
+			<h3>Publicações</h3>
+		</center>
+		<br>
+		<div class="row hidden div_not_iten ">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 div_alert" style="margin-bottom: 10px;">
+				<div class="panel-mat-title warning" style="width: 100% !important;">
+					<span style="top: 15px; position: relative;">Nenhum resumo encontrado</span>
+				</div>
+			</div>
+		</div>
+		<div class="div_listar" style="cursor: pointer;">
+			<div class="panel-mat" template-row="resumo" style="display: none;">
+				<div class="panel-mat-info">
+					<div>
+						<div class="small" template-field="publicacao"></div>
+						<div class="small" template-field="tema"></div>
+					</div>
+				</div>
+				<div class="panel-mat-title">
+					<a href="#" template-field="title">
+					</a>
+					<br>	
+					<span template-field="subtitle" class="small"></span>
+				</div>
+				<div class="panel-conteudo" template-field="conteudo"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="padding-top: 15px;">
+	</div>
+</div>

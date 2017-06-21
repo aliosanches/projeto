@@ -1,0 +1,5 @@
+Patch 1 - 19/07/2017
+	- Cadastro de Projetos
+	- Listagem de Projetos
+	- Edição de Projetos
+	- Exclusão de Projetos
