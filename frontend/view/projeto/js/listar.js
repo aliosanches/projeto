@@ -45,93 +45,105 @@ define([],function(){
 			row.find('[template-field="nome"]').text(item.nome);
 			row.find('[template-field="inicio"]').text(item.data_inicio);
 			row.find('[template-field="fim"]').text(item.data_fim);
-			
+			row.data('item', item);
+			row.find('[data-activates="drop"]').attr('data-activates', 'drop_' + item.id);
+			row.find('[id="drop"]').attr('id', 'drop_' + item.id);
+			row.find('[data-activates="drop2"]').attr('data-activates', 'drop_xs_' + item.id);
+			row.find('[id="drop2"]').attr('id', 'drop_xs_' + item.id);
 			if(aux.length == 0){
-				var param = [
-					{
-						click: function(e){
-							Util.load_pag('atividade/listar', function(html_id, obj){
-				                obj.show(item);
-				                main.unload();
-				            });
-						},
-						icon: '<i class="fa fa-list" aria-hidden="true"></i>', 
-						title: 'Atividades'
-					},
-					{
-						click: function(e){
-							var obj = {
-								title: 'Editar Projeto', 
-								text: '', 
-								fnLoad: function(modal_id, modal, loadModal){
-									modal.find('.modal-body').load('view/projeto/html/detalhes_projeto.html', function(html_string, error){
-								        if(error == 'error'){
-								            console.log('erro ao carregar pag');
-								            return;
-								        }
-								     	var elem = $(this);
-								     	elem.find('#nome').val(item.nome);
-								     	elem.find('#status').val(item.status);
-								     	elem.find('#data_inicio').attr('data-value', item.data_inicio);
-								     	elem.find('#data_fim').attr('data-value', item.data_fim);
-								     	loadModal();
-									});
-								}, 
-								utilizaConfirm: true, 
-								titleConfirm: 'Salvar', 
-								fnConfirm: function(modal_id, modal){
-									Util.post
-									(
-										'projeto/salvar', 
+				row.find('[template-button="atividades"]')
+				   .unbind('click')
+				   .click(function(e){
+						var item = $(this).parents('tr').data('item');
+						Util.load_pag('atividade/listar', function(html_id, obj){
+			                obj.show(item);
+			                main.unload();
+			            });
+					});
+				row.find('[template-button="editar"]')
+				   .unbind('click')
+				   .click(function(e){
+				   		var item = $(this).parents('tr').data('item');
+						var obj = {
+							title: 'Editar Projeto', 
+							text: '', 
+							fnLoad: function(modal_id, modal, loadModal){
+								modal.find('.modal-body').load('view/projeto/html/detalhes_projeto.html', function(html_string, error){
+							        if(error == 'error'){
+							            console.log('erro ao carregar pag');
+							            return;
+							        }
+							     	var elem = $(this);
+							     	elem.find('#nome').val(item.nome);
+							     	elem.find('#status').val(item.status);
+							     	elem.find('#data_inicio').attr('data-value', item.data_inicio);
+							     	elem.find('#data_fim').attr('data-value', item.data_fim);
+							     	loadModal();
+							     	$('.inputSelect').inputSelect({
+							        	label: 'Usuários',
+									}).setData([{
+											text: '1',
+											id: 1
+										},
 										{
-											projeto_id: item.id,
-											nome: modal.find('#nome').val(),
-											status: modal.find('#status').val(),
-											data_inicio: modal.find('#data_inicio').val(),
-											data_fim: modal.find('#data_fim').val()
-										}, 
-										function(response){
-											main.addRow(response);
-											modal.find('.modal-footer').remove();
-											modal.find('.modal-body').load('view/success.html', function(html_string, error){
-										        if(error == 'error'){
-										            console.log('erro ao carregar pag');
-										            return;
-										        }
-										     	setTimeout(function(){
-										     		modal.remove();
-										     	}, 3000);
-											});
-										}
-									);
-								}, 
-								utilizaCancel: true, 
-								titleCancel: 'Cancelar', 
-								ignoraConfirmClose: true
-							};
-							alertModal(obj);
-						},
-						icon: '<i class="fa fa-list" aria-hidden="true"></i>', 
-						title: 'Editar'
-					},
-					{
-						click: function(e){
-							Util.post
-							(
-								'projeto/excluir', 
-								{
-									projeto_id: item.id,
-								}, 
-								function(response){
-									row.remove();
-								}
-							);
-						},
-						icon: '<i class="fa fa-trash" aria-hidden="true"></i>', 
-						title: 'Excluir'
-					}
-				]
-				Util.createOptions(row.find('[template-field="options"]'), param);
+											text: '2',
+											id: 2
+										},
+										{
+											text: '3',
+											id: 3
+										}]);
+								});
+							}, 
+							utilizaConfirm: true, 
+							titleConfirm: 'Salvar', 
+							fnConfirm: function(modal_id, modal){
+								Util.post
+								(
+									'projeto/salvar', 
+									{
+										projeto_id: item.id,
+										nome: modal.find('#nome').val(),
+										status: modal.find('#status').val(),
+										data_inicio: modal.find('#data_inicio').val(),
+										data_fim: modal.find('#data_fim').val()
+									}, 
+									function(response){
+										main.addRow(response);
+										modal.find('.modal-footer').remove();
+										modal.find('.modal-body').load('view/success.html', function(html_string, error){
+									        if(error == 'error'){
+									            console.log('erro ao carregar pag');
+									            return;
+									        }
+									     	setTimeout(function(){
+									     		modal.remove();
+									     	}, 3000);
+										});
+									}
+								);
+							}, 
+							utilizaCancel: true, 
+							titleCancel: 'Cancelar', 
+							ignoraConfirmClose: true
+						};
+						alertModal(obj);
+					});
+				row.find('[template-button="excluir"]')
+				   .unbind('click')
+				   .click(function(e){
+				   		var item = $(this).parents('tr').data('item');
+						Util.post
+						(
+							'projeto/excluir', 
+							{
+								projeto_id: item.id,
+							}, 
+							function(response){
+								row.remove();
+							}
+						);
+					});			
 				main.tbody.append(row);
 			}
 		}
@@ -192,7 +204,8 @@ define([],function(){
 							nome: modal.find('#nome').val(),
 							status: modal.find('#status').val(),
 							data_inicio: Util.dateBrToBd(modal.find('#data_inicio').val()),
-							data_fim: Util.dateBrToBd(modal.find('#data_fim').val())
+							data_fim: Util.dateBrToBd(modal.find('#data_fim').val()),
+							usuarios: $('.inputSelect').inputSelect('data'),
 						}, 
 						function(response){
 							main.addRow(response);

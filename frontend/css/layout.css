@@ -25,3 +25,7 @@ tr.no-border td{
 li .active{
 	background-color: #eee;
 }
+
+.truncate{
+	max-width: 175px;
+}

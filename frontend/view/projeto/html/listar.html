@@ -7,22 +7,91 @@
 <table class="bordered striped table_projetos">
 	<thead>
 		<tr>
-			<th width="60" class="text-center">Código</th>
-			<th width="60" class="text-center">Status</th>
-			<th>Nome</th>
-			<th width="100" class="text-center">Inicio</th>
-			<th width="100" class="text-center">Fim</th>
-			<th width="60" class="text-center">Opcoes</th>
+			<th width="60" class="hide-on-small-only text-center">Código</th>
+			<th width="60" class="hide-on-small-only text-center">Status</th>
+			<th class="hide-on-small-only">Nome</th>
+			<th width="100" class="hide-on-small-only text-center">Inicio</th>
+			<th width="100" class="hide-on-small-only text-center">Fim</th>
+			<th width="60" class="hide-on-small-only text-center">Opcoes</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr class="hide" template-row="projeto">
-			<td class="text-center" template-field="codigo" ></td>
-			<td class="text-center" template-field="status" ></td>
-			<td template-field="nome" ></td>
-			<td class="text-center" template-field="inicio" ></td>
-			<td class="text-center" template-field="fim" ></td>
-			<td class="text-center" template-field="options"></td>
+			<td class="hide-on-med-and-up">
+				<div class="row">
+					<div class="col s2">
+						<div class="chip teal lighten-1" style="color: white;"  template-field="codigo">
+						</div>
+					</div>
+					<div class="col s10">
+				  		<span class="truncate" template-field="nome"></span>
+				  	</div>
+				</div>
+				<div class="row">
+					<div class="col s6">
+						<span>Inicio: <span template-field="inicio"></span></span>
+					</div>
+					<div class="col s6 right-align">
+						<span>Fim: <span template-field="fim"></span></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s2 center-align">
+						<span template-field="status"></span>
+					</div>
+					<div class="col s10">
+						<div template-field="options" style="width: 100%;">
+							<a style="width: 100%;" data-activates="drop2" class="dropdown-button btn" data-tooltip="tooltip" title="Opcoes">
+								<i class="fa fa-ellipsis-v"></i>
+							</a>
+							<ul class="dropdown-content" id="drop2">
+								<li>
+									<a href="#" class="text-left" template-button="atividades" title="Atividades">
+										<i class="fa fa-list" aria-hidden="true"></i>Atividades
+									</a>
+								</li>
+								<li>
+									<a href="#" class="text-left" template-button="editar" title="Editar">
+										<i class="fa fa-pencil" aria-hidden="true"></i>Editar
+									</a>
+								</li>
+								<li>
+									<a href="#" class="text-left" template-button="excluir" title="Excluir">
+										<i class="fa fa-trash" aria-hidden="true"></i>Excluir
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</td>
+			<td class="hide-on-small-only text-center" template-field="codigo" ></td>
+			<td class="hide-on-small-only text-center" template-field="status" ></td>
+			<td class="hide-on-small-only truncate" template-field="nome" ></td>
+			<td class="hide-on-small-only text-center" template-field="inicio" ></td>
+			<td class="hide-on-small-only text-center" template-field="fim" ></td>
+			<td class="hide-on-small-only text-center" template-field="options">
+				<a style="width: 100%;" data-activates="drop" class="dropdown-button btn" data-tooltip="tooltip" title="Opcoes">
+					<i class="fa fa-ellipsis-v"></i>
+				</a>
+				<ul class="dropdown-content" id="drop">
+					<li>
+						<a href="#" class="text-left" template-button="atividades" title="Atividades">
+							<i class="fa fa-list" aria-hidden="true"></i>Atividades
+						</a>
+					</li>
+					<li>
+						<a href="#" class="text-left" template-button="editar" title="Editar">
+							<i class="fa fa-pencil" aria-hidden="true"></i>Editar
+						</a>
+					</li>
+					<li>
+						<a href="#" class="text-left" template-button="excluir" title="Excluir">
+							<i class="fa fa-trash" aria-hidden="true"></i>Excluir
+						</a>
+					</li>
+				</ul>
+			</td>
 		</tr>
 	</tbody>
 </table>

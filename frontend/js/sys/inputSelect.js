@@ -1,20 +1,39 @@
 $.prototype.inputSelect = function(param, value){
 	var $elem = $(this);
-	var id = btoa(new Date() + Math.random());
-	var inputSelect = {
-		$chip_users: $('<div class="chips-users">'),
-		$div_input_field: $('<div class="div-input input-field">'),
-		$label: $('<label for="'+id+'">'),
-		$inp_usuarios: $('<input type="text" name="'+id+'" class="'+id+'" id="'+id+'">'),
-		$ul: $('<ul class="autocomplete-content dropdown-content">'),
-		getData: function(){
-			var chips = this.$chip_users.find('.chip');
+	var id = Util.gerar_hash(null, null, 'inputSelect_');
+	var inputSelect = $elem.data('inputSelect');
+	var SelectData = [];
+
+	if(!inputSelect){
+		inputSelect = {
+			id: id,
+			$chip_users: $('<div class="chips-users">'),
+			$div_input_field: $('<div class="div-input input-field">'),
+			$label: $('<label for="'+id+'">'),
+			$inp_usuarios: $('<input type="text" name="'+id+'" class="'+id+'" id="'+id+'">'),
+			$ul: $('<ul class="autocomplete-content dropdown-content">'),
+			getData: function(json){
+				var chips = this.$chip_users.find('.chip');
+				var aux = [];
+				for (var i = 0; i < chips.length; i++) {
+					var item = $(chips[i]).data('item');
+					aux.push(item);
+				}
+				if(json){
+					return JSON.stringify(aux);
+				}
+				return aux;
+			},
+			setData: function(data){
+				for (var i = 0; i < data.length; i++) {
+					addChips(data[i]);
+				}
+			}
 		}
 	}
 
-	var SelectData = [];
 	var _contruct = function(){
-		SelectData = param.data;
+		SelectData = param.data || [];
 		$elem.append(inputSelect.$chip_users);
 		$elem.append(inputSelect.$div_input_field);
 		inputSelect.$label.text(param.label);
@@ -40,7 +59,6 @@ $.prototype.inputSelect = function(param, value){
 			SelectData.push($chip.data('item'));
 			var total = inputSelect.$ul.find('li').length;
 			addLi(total, $chip.data('item'));
-			console.log(SelectData);
 		});
 		inputSelect.$chip_users.append($chip);
 	}
@@ -111,7 +129,10 @@ $.prototype.inputSelect = function(param, value){
 
 	if(typeof param == 'object'){
 		_contruct();
+	}else if(param == 'data'){
+		return inputSelect.getData(value);
 	}
 
 	$elem.data('inputSelect', inputSelect);
+	return inputSelect;
 }

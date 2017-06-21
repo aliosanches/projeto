@@ -8,11 +8,11 @@ var Util = {
     sys: null 
 };
 
-Util.gerar_hash = function(text, justtext){ 
+Util.gerar_hash = function(text, justtext, prefix){ 
     if(justtext){
         return md5(text);
     }
-    return md5(Math.random()+new Date()+Math.random()+text);
+    return prefix + md5(Math.random()+new Date()+Math.random()+text);
 };
 
 Util.setConfig = function(campo, valor){
@@ -62,11 +62,6 @@ Util.instanciaFn = function(){
         $('.dropdown-button').dropdown({
             inDuration: 300,
             outDuration: 225,
-            constrainWidth: false, // Does not change width of dropdown to that of the activator
-            gutter: 0, // Spacing from edge
-            belowOrigin: true, // Displays dropdown below the button
-            alignment: 'right', // Displays dropdown with edge aligned to the left of button
-            stopPropagation: false // Stops event propagation
         });
 
         $('.datepicker').pickadate({
@@ -159,7 +154,7 @@ Util.createOptions = function(parent, itens){
     parent = $(parent);
     if(parent.length > 0 && itens && itens.length > 0){
         var id = 'dropdown_' + Util.gerar_hash();
-        var btn = $('<a data-activates="'+id+'" class="dropdown-button btn" data-tooltip="tooltip" title="Opcoes">');
+        var btn = $('<a style="width: 100%;" data-activates="'+id+'" class="dropdown-button btn" data-tooltip="tooltip" title="Opcoes">');
         btn.append('<i class="fa fa-ellipsis-v"></i>');
         var ul = $('<ul class="dropdown-content" id="'+id+'">');
 
